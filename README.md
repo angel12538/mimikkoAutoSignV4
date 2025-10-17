@@ -1,6 +1,9 @@
 # mimikkoAutoSignV4  
-修复了两个BUG,解决了运行时报错“ [main.py:228][ERROR]:Travel:[Errno 22] Invalid argument" ”的问题，以及运行时报错“C:\******（隐私路径打码隐藏）\mimikkoAutoSignV4-master\util\logger.py:38: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\*******（隐私路径打码隐藏）\\mimikkoAutoSignV4-master\\log\\main.log' mode='a' encoding='utf-8'> self.logger.handlers = [] ResourceWarning: Enable tracemalloc to get the object allocation traceback”的问题。
+修复了两个BUG
 
+1. task/Travel.py 的剩余时间格式化使用了 time.gmtime(remain_time_s)。当后端返回的剩余时间为负数（活动已结束/异常值）时，Windows 的 gmtime() 会直接抛出 OSError: [Errno 22] Invalid argument，导致「助手出游」任务中断。
+
+2. util/logger.py 中通过 self.logger.handlers = [] 直接清空 handlers，未先 flush()/close() 旧句柄，触发 ResourceWarning: unclosed file ...，在频繁运行/轮转日志时也可能造成句柄泄漏。
 
 ------
 用于兽耳桌面相关V4接口测试  
@@ -143,3 +146,4 @@
 - Travel(助手出游): add 明信片兑换
 
 - Travel(助手出游): add 自行添加助手指定区域出游  
+
