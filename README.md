@@ -1,4 +1,8 @@
 # mimikkoAutoSignV4  
+修复了两个BUG,解决了运行时报错“ [main.py:228][ERROR]:Travel:[Errno 22] Invalid argument" ”的问题，以及运行时报错“C:\******（隐私路径打码隐藏）\mimikkoAutoSignV4-master\util\logger.py:38: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\*******（隐私路径打码隐藏）\\mimikkoAutoSignV4-master\\log\\main.log' mode='a' encoding='utf-8'> self.logger.handlers = [] ResourceWarning: Enable tracemalloc to get the object allocation traceback”的问题。
+
+
+------
 用于兽耳桌面相关V4接口测试  
 不要到处宣传 偷偷用就行了 应该不会封号吧
 ## 使用
@@ -137,4 +141,5 @@
 - OrdinaryWork(公会悬赏)：add 优先完成低等级耗时少的任务
 - Travel(助手出游): add 旅行区域满人跳转下一区域
 - Travel(助手出游): add 明信片兑换
+
 - Travel(助手出游): add 自行添加助手指定区域出游  
